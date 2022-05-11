@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.img {
+    width: 25rem;
+    height: 28rem;
+    margin-top: 10rem;
+}
+
+.timer {
+    font-size: 7rem;
+    margin-top: -17.5rem;
+}
+
+.btnArea {
+    display: flex;
+    margin-top: 10rem;
+    gap: 1.5rem;
+}
+
+.btn {
+    width: 8rem;
+    padding: 0.2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: #FFFFFF;
+    border-radius: .4rem;
+    border: none;
+}
+
+.btn:active {
+    filter: brightness(0.9);
+}
