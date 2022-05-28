@@ -20,19 +20,14 @@ export default function App() {
     }
 
     if (nameBtn === "Pausar") {
-      if (interval) {
-        clearInterval(interval);
-        setNameBtn("Iniciar");
-        return;
-      }
+      if (interval) clearInterval(interval); setNameBtn("Iniciar");
     }
   }
 
-  function clearTimer(interval){
+  function clearTimer(){
     clearInterval(interval);
     setNameBtn('Iniciar')
     setTimer(0)
-    return
   }
 
   return (
@@ -43,7 +38,7 @@ export default function App() {
         <button className="btn" onClick={() => startTimer(timer)}>
           {nameBtn}
         </button>
-        <button className="btn" onClick={() => clearTimer(interval)}>Limpar</button>
+        <button className="btn" onClick={() => clearTimer()}>Limpar</button>
       </div>
     </div>
   );
