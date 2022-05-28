@@ -1,68 +1,50 @@
-import React, { Component } from 'react';
-import './styles.css'
+import React, { useState } from "react";
+import "./styles.css";
 
-class App extends Component {
+import image from "../assets/cronometro.png";
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      number: 0,
-      btn: 'Iniciar'
-    };
+export default function App() {
+  const [timer, setTimer] = useState(0);
+  const [interval, setIntervaly] = useState(0);
 
-    this.timer = null;
-    this.start = this.start.bind(this);
-    this.clear = this.clear.bind(this);
+  let [nameBtn, setNameBtn] = useState("Iniciar");
 
-  }
-
-  start() {
-
-    let state = this.state;
-
-    if (this.timer !== null) {
-      clearInterval(this.timer);
-      this.timer = null
-      state.btn = 'Iniciar'
-    } else {
-      this.timer = setInterval(() => {
-        let state = this.state;
-        state.number += 0.1
-        this.setState(state)
-      }, 100)
-      state.btn = 'Pausar'
-    }
-    this.setState(state);
-  }
-
-  clear() {
-
-    if (this.timer !== null) {
-      clearInterval(this.timer);
-      this.timer = null
+  function startTimer(timer) {
+    if (nameBtn === "Iniciar") {
+      const intervaly = setInterval(() => {
+        timer += 0.1;
+        setTimer(timer);
+      }, 100);
+      setNameBtn("Pausar");
+      setIntervaly(intervaly);
     }
 
-    let state = this.state;
-    state.number = 0;
-    state.btn = 'Iniciar'
-    this.setState(state);
-
+    if (nameBtn === "Pausar") {
+      if (interval) {
+        clearInterval(interval);
+        setNameBtn("Iniciar");
+        return;
+      }
+    }
   }
 
-  render() {
-    return (
-      <>
-        <div className='container'>
-          <img className='img' src={require('../assets/cronometro.png')} />
-          <a className='timer'>{this.state.number.toFixed(1)}</a>
-          <div className='btnArea'>
-            <button className='btn' onClick={this.start}>{this.state.btn}</button>
-            <button className='btn' onClick={this.clear}>Limpar</button>
-          </div>
-        </div>
-      </>
-    );
+  function clearTimer(interval){
+    clearInterval(interval);
+    setNameBtn('Iniciar')
+    setTimer(0)
+    return
   }
+
+  return (
+    <div className="container">
+      <img className="img" src={image} />
+      <p className="timer">{timer.toFixed(1)}</p>
+      <div className="btnArea">
+        <button className="btn" onClick={() => startTimer(timer)}>
+          {nameBtn}
+        </button>
+        <button className="btn" onClick={() => clearTimer(interval)}>Limpar</button>
+      </div>
+    </div>
+  );
 }
-
-export default App;
