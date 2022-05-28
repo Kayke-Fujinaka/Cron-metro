@@ -9,7 +9,7 @@ export default function App() {
 
   let [nameBtn, setNameBtn] = useState("Iniciar");
 
-  function startTimer(timer) {
+  const startTimer = (timer) => {
     if (nameBtn === "Iniciar") {
       const intervaly = setInterval(() => {
         timer += 0.1;
@@ -24,7 +24,7 @@ export default function App() {
     }
   }
 
-  function clearTimer(){
+  const clearTimer = () => {
     clearInterval(interval);
     setNameBtn('Iniciar')
     setTimer(0)
