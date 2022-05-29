@@ -2,7 +2,7 @@
 
 <img src="./src/assets/img.png" alt="Um gif apresentando o projeto">
 
->  Um site de um cronômetro virtual!!
+>  Um site de um cronômetro virtual!
 
 Confira a aplicação: https://stoopwatch.netlify.app
 
